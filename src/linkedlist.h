@@ -1,6 +1,7 @@
 // linked.h
 
 #include <cstddef> // size_t
+#include <cstdlib>
 #include <istream> // overload >>
 #include <ostream> // overload <<
 #include <cassert>
@@ -57,6 +58,8 @@ class LinkedList {
 
             lBeforeDel->UpdateNext(lAfterDel);
             lAfterDel->UpdatePrev(lBeforeDel);
+
+            free(lDelMe);
         }
 
         T* Traversal(T(*Action)(Node<T>)) noexcept
